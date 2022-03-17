@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overscroll-behavior: none; /* Prevent whitespace after scrolling to the edges of the page */
+}
+
+body {
+  font-size: 10px;
+  overflow-x: auto;
+  background: url("./images/snow2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "Roboto";
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+
+.header-container {
+  display: flex;
+  background: rgba(124, 126, 231, 0.32);
+  height: 3.5em;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.logo-wrapper {
+  position: absolute;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  height: 3em;
+  left: 50%;
+}
+
+.action-button {
+  margin-left: 0.5em;
+  cursor: pointer;
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.24);
+  padding: 0 1em 0 1em;
+}
+
+.action-btn-text {
+  font-weight: bold;
+}
+
+.btn-text {
+  font-size: 1.5em;
+  margin-left: 0.5em;
+}
+
+.action-button {
+  padding: 1em;
+  border-radius: 0.3em;
+  height: 3em;
+  background: rgba(255, 255, 255, 0.24);
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  opacity: 0.5;
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.logo,
+.logo:hover {
+  background: url("./images/trello-logo.png");
+  background-size: 8em 3em;
+  background-position: 100% 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  width: 8em;
+  margin-top: 0.3em;
+}
+
+i {
+  /* Set the below font-size as default for icons */
+  font-size: 1.5em;
+}
+
+/* Board Header */
+
+.board-header {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 3.5em;
+  left: 0;
+  background: rgba(18, 21, 223, 0.26);
+  color: white;
+  padding: 0.6em 0.8em;
+  width: 100%;
+}
+
+.board-title {
+  font-size: 1.8em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin: 0.5em 1.2em;
+}
+
+.board-header-right-btns-wrapper {
+  display: flex;
+  align-items: center;
+  width: auto;
+}
+
+.action-button.personal {
+  background: none;
+  padding: 0;
+  font-size: 1.5em;
+}
+
+.action-button {
+  margin-left: 1em;
+  padding: 0 1.2em;
+}
+
+.btn-text {
+  margin: 0;
+}
+
+.board-header-right-btns-wrapper {
+  position: absolute;
+  display: flex;
+  right: 1em;
+  width: 200px;
+  height: 50px;
+  justify-content: flex-end;
+}
+
+.action-button.butler,
+.action-button.menu {
+  position: absolute;
+}
+
+.action-button.butler {
+  right: 12.5em;
+}
+
+.action-button.menu {
+  right: 0;
+}
+
+/* Board Content */
