@@ -1,22 +1,17 @@
 import axios from "https://cdn.skypack.dev/axios";
-import Card from "./Card.js";
+import { PlusCard, PlusInput } from "./Card.js";
 
 //parent Node
 let BoardContent = document.getElementsByClassName("board-content");
-console.log("보드컨텐츠", BoardContent[0]);
 let Addlist = document.getElementsByClassName("Add-list-content");
-console.log("에드리스트", Addlist);
-let Add = document.getElementsByClassName("list-content");
+let Addcard = document.getElementsByClassName("Add-card-content");
 
 let count = 0;
 
-let newCard = document.createElement("div");
-newCard.id = count++;
-newCard.className = "Add-card-content";
-
 // make new list item
 function Pluslists(e) {
-  console.log();
+  count++;
+
   let newlist = document.createElement("div");
   newlist.className = "list-content";
 
@@ -27,10 +22,11 @@ function Pluslists(e) {
   listheaderText.className = "list-header-title";
 
   let newlistWrapper = document.createElement("div");
+  newlistWrapper.id = count;
   newlistWrapper.className = "list-cards-wrapper-wrapper";
 
   let newCard = document.createElement("div");
-  newCard.id = count++;
+  newCard.id = count;
   newCard.className = "Add-card-content";
 
   let Plusicon = document.createElement("i");
@@ -46,6 +42,9 @@ function Pluslists(e) {
   newlistWrapper.appendChild(newCard);
   newCard.appendChild(Plusicon);
   newCard.appendChild(AddCard);
+  newCard.addEventListener("click", (e) => {
+    PlusInput(e);
+  });
 
   let inputText = document.createElement("input");
   inputText.className = "newList";
@@ -68,11 +67,6 @@ function PluslistsInput() {
     if (window.event.keyCode == 13) {
       Pluslists(ele);
       ele.target.parentNode.removeChild(inputText);
-
-      //
-      // newCard.addEventListener("click", function (e) {
-      //   Card(e.target.parentNode.id);
-      // });
     }
   }
 }
@@ -80,40 +74,6 @@ function PluslistsInput() {
 // end Add another list make input
 
 Addlist[0].addEventListener("click", () => PluslistsInput());
-
-// for (let i = 0; i < Addlist.length; i++) {
-//   Addlist[i].addEventListener("click", function (e) {
-// click Add another list make input
-//     console.log("이건 뭐지", e.target);
-//     function enterkey() {
-//       if (window.event.keyCode == 13) {
-//         listheaderText.textContent = inputText.value;
-//         BoardContent[i].removeChild(inputText);
-
-//         Addmain.appendChild(newlist);
-//         Addmain.insertBefore(newlist, Addlist[0]);
-
-//         newlist.appendChild(listheader);
-//         listheader.appendChild(listheaderText);
-//         newlist.appendChild(newlistWrapper);
-//         newlistWrapper.appendChild(newCard);
-
-//         //
-//         newCard.addEventListener("click", function (e) {
-//           Card(e.target.parentNode.id);
-//         });
-//         newCard.appendChild(Plusicon);
-//         newCard.appendChild(AddCard);
-//       }
-//     }
-
-//     inputText.onkeyup = enterkey;
-//     BoardContent[0].appendChild(inputText);
-//     Addmain.insertBefore(inputText, Addlist[i]);
-
-//     // end Add another list make input
-//   });
-// }
 
 // const handleSubmit = () => {
 //   axios
