@@ -1,45 +1,119 @@
 import axios from "https://cdn.skypack.dev/axios";
+import Card from "./Card.js";
 
 //parent Node
 let BoardContent = document.getElementsByClassName("board-content");
+console.log("보드컨텐츠", BoardContent[0]);
 let Addlist = document.getElementsByClassName("Add-list-content");
-console.log(Addlist);
+console.log("에드리스트", Addlist);
 let Add = document.getElementsByClassName("list-content");
 
-for (var i = 0; i < Addlist.length; i++) {
-  Addlist[i].addEventListener("click", function () {
-    let Addmain = document.getElementsByClassName("board-content")[0];
+let count = 0;
 
-    let newlist = document.createElement("div");
-    newlist.className = "list-content";
+let newCard = document.createElement("div");
+newCard.id = count++;
+newCard.className = "Add-card-content";
 
-    let newlistWrapper = document.createElement("div");
-    newlistWrapper.className = "list-cards-wrapper-wrapper";
+// make new list item
+function Pluslists(e) {
+  console.log();
+  let newlist = document.createElement("div");
+  newlist.className = "list-content";
 
-    let newCard = document.createElement("div");
-    newCard.className = "Add-card-content";
+  let listheader = document.createElement("div");
+  listheader.className = "list-header";
 
-    let Plusicon = document.createElement("i");
-    Plusicon.className = "fa-solid fa-plus";
+  let listheaderText = document.createElement("h2");
+  listheaderText.className = "list-header-title";
 
-    let AddCard = document.createElement("p");
-    AddCard.className = "Add-card-content-text";
+  let newlistWrapper = document.createElement("div");
+  newlistWrapper.className = "list-cards-wrapper-wrapper";
 
-    AddCard.textContent = "Add another card";
+  let newCard = document.createElement("div");
+  newCard.id = count++;
+  newCard.className = "Add-card-content";
 
-    Addmain.insertBefore(newlist, Addlist[0]);
+  let Plusicon = document.createElement("i");
+  Plusicon.className = "fa-solid fa-plus";
 
-    // Addmain.appendChild(newlist);
-    newlist.appendChild(newlistWrapper);
-    newlistWrapper.appendChild(newCard);
-    newCard.appendChild(Plusicon);
-    newCard.appendChild(AddCard);
+  let AddCard = document.createElement("p");
+  AddCard.className = "Add-card-content-text";
+  AddCard.textContent = "Add another card";
 
-    return Addmain;
-  });
+  newlist.appendChild(listheader);
+  listheader.appendChild(listheaderText);
+  newlist.appendChild(newlistWrapper);
+  newlistWrapper.appendChild(newCard);
+  newCard.appendChild(Plusicon);
+  newCard.appendChild(AddCard);
+
+  let inputText = document.createElement("input");
+  inputText.className = "newList";
+  listheaderText.textContent = e.target.value;
+  e.target.parentNode.appendChild(newlist);
+  e.target.parentNode.insertBefore(newlist, Addlist[0]);
 }
 
-console.log(BoardContent);
+// end make new list
+
+// click Add another list make input
+
+function PluslistsInput() {
+  let inputText = document.createElement("input");
+  inputText.className = "newList";
+  BoardContent[0].appendChild(inputText);
+  BoardContent[0].insertBefore(inputText, Addlist[0]);
+  inputText.onkeyup = enterkey;
+  function enterkey(ele) {
+    if (window.event.keyCode == 13) {
+      Pluslists(ele);
+      ele.target.parentNode.removeChild(inputText);
+
+      //
+      // newCard.addEventListener("click", function (e) {
+      //   Card(e.target.parentNode.id);
+      // });
+    }
+  }
+}
+
+// end Add another list make input
+
+Addlist[0].addEventListener("click", () => PluslistsInput());
+
+// for (let i = 0; i < Addlist.length; i++) {
+//   Addlist[i].addEventListener("click", function (e) {
+// click Add another list make input
+//     console.log("이건 뭐지", e.target);
+//     function enterkey() {
+//       if (window.event.keyCode == 13) {
+//         listheaderText.textContent = inputText.value;
+//         BoardContent[i].removeChild(inputText);
+
+//         Addmain.appendChild(newlist);
+//         Addmain.insertBefore(newlist, Addlist[0]);
+
+//         newlist.appendChild(listheader);
+//         listheader.appendChild(listheaderText);
+//         newlist.appendChild(newlistWrapper);
+//         newlistWrapper.appendChild(newCard);
+
+//         //
+//         newCard.addEventListener("click", function (e) {
+//           Card(e.target.parentNode.id);
+//         });
+//         newCard.appendChild(Plusicon);
+//         newCard.appendChild(AddCard);
+//       }
+//     }
+
+//     inputText.onkeyup = enterkey;
+//     BoardContent[0].appendChild(inputText);
+//     Addmain.insertBefore(inputText, Addlist[i]);
+
+//     // end Add another list make input
+//   });
+// }
 
 // const handleSubmit = () => {
 //   axios
@@ -51,5 +125,3 @@ console.log(BoardContent);
 //       console.log(err);
 //     });
 // };
-
-// handleSubmit();
