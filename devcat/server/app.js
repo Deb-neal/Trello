@@ -22,6 +22,7 @@ app.use(
   })
 );
 
+// 변경사항 적용을 위한 코드 , 미완성
 app.get("/", (req, res, next) => {
   let requestOptions = {
     hostname: "127.0.0.1",
@@ -45,5 +46,6 @@ app.post("/", (req, res) => {
   res.liveReload(__dirname + "/../client/index.html");
   res.sendFile(path.resolve("../client/index.html"));
 });
+// END 변경사항 적용을 위한 코드 , 미완성
 
 app.listen(4000, () => console.log("4000번 포트에서 대기중"));
