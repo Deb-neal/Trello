@@ -5,7 +5,6 @@ import { PlusCard, PlusInput } from "./Card.js";
 let BoardContent = document.getElementsByClassName("board-content");
 let Addlist = document.getElementsByClassName("Add-list-content");
 let Addcard = document.getElementsByClassName("Add-card-content");
-
 let count = 0;
 
 // make new list item
@@ -75,13 +74,4 @@ function PluslistsInput() {
 
 Addlist[0].addEventListener("click", () => PluslistsInput());
 
-// const handleSubmit = () => {
-//   axios
-//     .post("http://localhost:4000/makeList", {}, { withCredentials: true })
-//     .then((res) => {
-//       console.log(res);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
+export { Pluslists, PluslistsInput };

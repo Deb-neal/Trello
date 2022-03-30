@@ -239,6 +239,7 @@ i {
 }
 
 .list-card-details {
+  text-align: center;
   background-color: #fff;
   border-radius: 3px;
   width: 95%;

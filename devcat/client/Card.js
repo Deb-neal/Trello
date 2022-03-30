@@ -6,8 +6,6 @@ let ListWrapper = document.getElementsByClassName("list-cards-wrapper-wrapper");
 let AddcardButton = document.getElementsByClassName("Add-card-content-text");
 
 function PlusCard(e, i) {
-  console.log(i.target.parentNode.id);
-  console.log(ListWrapper[i.target.parentNode.id]);
   // Add another card
   let newcard = document.createElement("div");
   newcard.className = "list-card-details";
@@ -15,7 +13,7 @@ function PlusCard(e, i) {
   let newcardText = document.createElement("span");
   newcardText.className = "list-card-member-title";
   newcardText.textContent = e.target.value;
-  console.log("나", Addcard[i.target.parentNode.id]);
+
   ListWrapper[i.target.parentNode.id].insertBefore(
     newcard,
     Addcard[i.target.parentNode.id]
